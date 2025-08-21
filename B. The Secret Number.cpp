@@ -6,18 +6,18 @@ int main() {
     cin.tie(nullptr);
 
     int t;
-    cin >> t; // number of test cases
+    cin >> t;
 
     while (t--) {
         long long n;
         cin >> n;
 
         vector<long long> ans;
-        long long pow10 = 10; // 10^1
+        long long pow10 = 10; 
 
         for (int k = 1; k <= 18; k++) {
-            long long denom = pow10 + 1; // (1 + 10^k)
-            if (denom > n) break; // আর চেক করার দরকার নেই
+            long long denom = pow10 + 1; 
+            if (denom > n) break; 
             if (n % denom == 0) {
                 ans.push_back(n / denom);
             }
