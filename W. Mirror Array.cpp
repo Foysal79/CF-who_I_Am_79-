@@ -14,11 +14,33 @@ int main()
         }
     }
 
+    // for(int i = 0; i < row; i++)
+    // {
+    //     for(int j = 0; j < col; j++)
+    //     {
+    //         cout << a[i][col-j-1] << " ";
+    //     }
+    //     cout << endl;
+    // }
+
+    //* use tow pointer
+    
+    for(int i = 0; i < row; i++)
+    {
+        int x = 0, y = col - 1;
+        while(x < y)
+        {
+           swap(a[i][x], a[i][y]);
+            x++;
+            y--;
+        }
+    }
+
     for(int i = 0; i < row; i++)
     {
         for(int j = 0; j < col; j++)
         {
-            cout << a[i][col-j-1] << " ";
+            cout << a[i][j] << " ";
         }
         cout << endl;
     }
