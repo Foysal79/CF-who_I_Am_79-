@@ -2,28 +2,37 @@
 using namespace std;
 
 int main() {
-    
-    int a, b;
-    cin >> a >> b;
-    string s;
-    cin >> s;
-    
-    if(s[a] == '-'){
-     bool flag = true;
-     for(int i = 0; i < s.size(); i++)
-     {
-        if (i == a) continue;
-        if(!(s[i] >= '0' && s[i] <= '9'))
-        {
-           flag = false;
-           break;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin >> t;
+    while(t--) {
+        int n;
+        cin >> n;
+        vector<long long> h(n);
+        for(int i = 0; i < n; i++) cin >> h[i];
+
+        long long ans = LLONG_MAX;
+
+        for(int start = 0; start < n; start++) {
+            vector<long long> tmp = h;
+            long long attacks = 0;
+            // damage start from mob `start`
+            attacks += tmp[start];
+            tmp[start] = 0;
+
+            // simulate left part (circular)
+            for(int i = (start + 1) % n; i != start; i = (i + 1) % n) {
+                long long prev = tmp[(i-1+n)%n];
+                long long dmg_needed = max(0LL, tmp[i]-prev);
+                attacks += dmg_needed;
+                tmp[i] -= dmg_needed;
+            }
+            ans = min(ans, attacks);
         }
-     }
-     if(flag) cout << "Yes" << endl;
-     else cout << "No" << endl;
-    }
-    else{
-        cout << "No" << endl;
+
+        cout << ans << "\n";
     }
 
     return 0;
