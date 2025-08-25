@@ -4,6 +4,21 @@ using namespace std;
 int main() {
 
 
+    int n, m;
+    cin >> n>> m;
+    int ar[n], f[m] = {0};
+    for(int i = 0; i < n; i++)
+    {
+       cin >> ar[i];
+       f[ar[i]-1]++;
+    }
+    
+    for(int i = 0; i < m; i++)
+    {
+        cout << f[i] << endl;
+      
+    }
+    
 
     return 0;
 }
